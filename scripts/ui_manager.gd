@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var day_label = $HUD/DayLabel
 @onready var weather_label = $HUD/WeatherLabel
 @onready var inventory_button = $HUD/InventoryButton
-@ontml:parameter name="crafting_button = $HUD/CraftingButton
+@onready var crafting_button = $HUD/CraftingButton
 @onready var joystick = $TouchControls/Joystick
 
 var game_manager: Node

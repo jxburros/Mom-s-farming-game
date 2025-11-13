@@ -5,7 +5,7 @@ extends Node2D
 @onready var player = $Player
 @onready var farm = $Farm
 @onready var inventory = $Inventory
-@ontml:parameter name="crafting = $Crafting
+@onready var crafting = $Crafting
 @onready var save_load = $SaveLoad
 @onready var ui = $UI
 @onready var camera = $Camera2D
