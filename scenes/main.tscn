@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3wvxqfj0qtxu"]
+[gd_scene load_steps=4 format=3 uid="uid://b3wvxqfj0qtxu"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_player"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1"]
+size = Vector2(32, 32)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -12,6 +16,11 @@ color = Color(1, 1, 1, 1)
 position = Vector2(360, 640)
 zoom = Vector2(1.5, 1.5)
 
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.2, 0.4, 0.2, 1)
+
 [node name="Farm" type="Node2D" parent="."]
 
 [node name="FarmPlot1" type="Node2D" parent="Farm"]
@@ -19,61 +28,57 @@ position = Vector2(200, 500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot1"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="FarmPlot2" type="Node2D" parent="Farm"]
 position = Vector2(300, 500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot2"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="FarmPlot3" type="Node2D" parent="Farm"]
 position = Vector2(400, 500)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot3"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="FarmPlot4" type="Node2D" parent="Farm"]
 position = Vector2(200, 600)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot4"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="FarmPlot5" type="Node2D" parent="Farm"]
 position = Vector2(300, 600)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot5"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="FarmPlot6" type="Node2D" parent="Farm"]
 position = Vector2(400, 600)
 
 [node name="Sprite2D" type="Sprite2D" parent="Farm/FarmPlot6"]
 modulate = Color(0.6, 0.4, 0.2, 1)
-scale = Vector2(30, 30)
-texture = SubResource("1_placeholder")
+scale = Vector2(2, 2)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(360, 400)
+script = ExtResource("2_player")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 modulate = Color(0.2, 0.6, 0.8, 1)
-scale = Vector2(20, 40)
-texture = SubResource("1_placeholder")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("2_rect_shape")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("PlaceholderTexture2D_1")
 
 [node name="Inventory" type="Node" parent="."]
 
@@ -97,6 +102,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 150.0
 offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
 text = "Time: 06:00"
 
 [node name="DayLabel" type="Label" parent="UI/HUD"]
@@ -105,6 +111,7 @@ offset_left = 10.0
 offset_top = 40.0
 offset_right = 150.0
 offset_bottom = 70.0
+theme_override_font_sizes/font_size = 20
 text = "Day: 1"
 
 [node name="WeatherLabel" type="Label" parent="UI/HUD"]
@@ -113,6 +120,7 @@ offset_left = 10.0
 offset_top = 70.0
 offset_right = 200.0
 offset_bottom = 100.0
+theme_override_font_sizes/font_size = 20
 text = "Weather: Sunny"
 
 [node name="InventoryButton" type="Button" parent="UI/HUD"]
@@ -125,6 +133,7 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 60.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 18
 text = "Inventory"
 
 [node name="CraftingButton" type="Button" parent="UI/HUD"]
@@ -137,6 +146,7 @@ offset_top = 70.0
 offset_right = -10.0
 offset_bottom = 120.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 18
 text = "Crafting"
 
 [node name="SaveButton" type="Button" parent="UI/HUD"]
@@ -149,6 +159,7 @@ offset_top = -60.0
 offset_right = 120.0
 offset_bottom = -10.0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 18
 text = "Save Game"
 
 [node name="LoadButton" type="Button" parent="UI/HUD"]
@@ -161,6 +172,7 @@ offset_top = -60.0
 offset_right = 240.0
 offset_bottom = -10.0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 18
 text = "Load Game"
 
 [node name="TouchControls" type="Control" parent="UI"]
@@ -190,12 +202,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -300.0
-offset_right = 200.0
-offset_bottom = 300.0
+offset_left = -250.0
+offset_top = -350.0
+offset_right = 250.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Inventory"
+horizontal_alignment = 1
 
 [node name="ItemList" type="ItemList" parent="UI/InventoryPanel"]
 layout_mode = 1
@@ -208,6 +231,7 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 18
 
 [node name="CloseButton" type="Button" parent="UI/InventoryPanel"]
 layout_mode = 1
@@ -219,6 +243,7 @@ offset_top = 5.0
 offset_right = -5.0
 offset_bottom = 35.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
 text = "X"
 
 [node name="CraftingPanel" type="Panel" parent="UI"]
@@ -228,12 +253,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -300.0
-offset_right = 200.0
-offset_bottom = 300.0
+offset_left = -250.0
+offset_top = -350.0
+offset_right = 250.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/CraftingPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Crafting"
+horizontal_alignment = 1
 
 [node name="RecipeList" type="ItemList" parent="UI/CraftingPanel"]
 layout_mode = 1
@@ -246,6 +282,7 @@ offset_right = -10.0
 offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 18
 
 [node name="CraftButton" type="Button" parent="UI/CraftingPanel"]
 layout_mode = 1
@@ -254,12 +291,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
+offset_left = -75.0
 offset_top = -50.0
-offset_right = 50.0
+offset_right = 75.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 20
 text = "Craft"
 
 [node name="CloseButton" type="Button" parent="UI/CraftingPanel"]
@@ -272,4 +310,5 @@ offset_top = 5.0
 offset_right = -5.0
 offset_bottom = 35.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
 text = "X"

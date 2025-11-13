@@ -48,12 +48,6 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-	# Update animation based on direction
-	if direction.length() > 0:
-		$AnimatedSprite2D.play("walk")
-		if direction.x < 0:
-			$AnimatedSprite2D.flip_h = true
-		elif direction.x > 0:
-			$AnimatedSprite2D.flip_h = false
-	else:
-		$AnimatedSprite2D.play("idle")
+	# Update sprite based on direction (simplified - no animations yet)
+	if has_node("Sprite2D") and direction.x != 0:
+		$Sprite2D.flip_h = direction.x < 0
